@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="black">#FF000000</color>
-	<color name="white">#FFFFFFFF</color>
+
+	<!-- Main UI colors -->
+	<color name="header_background">#221015</color>
+	<color name="header_text">#FFFFFF</color>
+
+	<color name="section_background">#FFECD5</color>
+	<color name="section_text">#7D5D43</color>
+	<color name="option_color">#DD1B62</color>
+
+	<color name="total_divider">#CDC2B5</color>
+	<color name="total_text">#614121</color>
+	<color name="total_price">#DE6474</color>
+
+	<color name="page_background">#FFFFFF</color>
+
 </resources>

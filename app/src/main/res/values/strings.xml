@@ -1,3 +1,49 @@
 <resources>
-	<string name="app_name">COS30017 Assignmemt 3 - Task 1</string>
+	<string name="app_name">Sandwich App</string>
+
+	<!-- App title -->
+	<string name="app_title">My Sandwich Bar</string>
+
+	<!-- Section titles -->
+	<string name="filling_selection">Filling |</string>
+	<string name="side_selection">Side |</string>
+	<string name="size_selection">Size</string>
+
+	<!-- Filling options -->
+	<string name="filling_ham">Ham</string>
+	<string name="filling_chicken">Roasted Chicken</string>
+	<string name="filling_beef">Beef Steak</string>
+	<string name="filling_salmon">Grilled Salmon</string>
+	<string name="filling_kebab">Kebab</string>
+
+	<!-- Side options -->
+	<string name="side_tomato">Tomato</string>
+	<string name="side_lettuce">Lettuce</string>
+	<string name="side_onion">Onion</string>
+	<string name="side_cheese">Cheese</string>
+
+	<!-- Size options -->
+	<string name="size_6_inch">6 inch</string>
+	<string name="size_9_inch">9 inch</string>
+	<string name="size_12_inch">12 inch</string>
+
+	<!-- Total -->
+	<string name="total">Total</string>
+	<string name="default_total">RM 7.00</string>
+
+	<!-- Accessibility descriptions -->
+	<string name="content_ham">Ham</string>
+	<string name="content_chicken">Roasted Chicken</string>
+	<string name="content_beef">Beef Steak</string>
+	<string name="content_salmon">Grilled Salmon</string>
+	<string name="content_kebab">Kebab</string>
+
+	<string name="content_tomato">Tomato</string>
+	<string name="content_lettuce">Lettuce</string>
+	<string name="content_onion">Onion</string>
+	<string name="content_cheese">Cheese</string>
+
+	<string name="content_place_order">Place Order</string>
+	<string name="content_reset">Reset</string>
+
 </resources>
