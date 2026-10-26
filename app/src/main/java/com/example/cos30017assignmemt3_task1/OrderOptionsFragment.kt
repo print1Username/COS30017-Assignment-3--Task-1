@@ -74,7 +74,7 @@ class OrderOptionsFragment : Fragment() {
 	}
 
 	private fun setupDefaultState() {
-		radioSize.check(R.id.radio6Inch)
+		radioSize.clearCheck()
 		fillingSelection.text = "Filling |"
 		sideSelection.text = "Side |"
 		lastSelectedFilling = null
@@ -118,6 +118,15 @@ class OrderOptionsFragment : Fragment() {
 				AlertDialog.Builder(requireContext())
 					.setTitle("Error")
 					.setMessage("Please select at least one filling.")
+					.setPositiveButton("OK", null)
+					.show()
+				return@setOnClickListener
+			}
+
+			if (radioSize.checkedRadioButtonId == View.NO_ID) {
+				AlertDialog.Builder(requireContext())
+					.setTitle("Error")
+					.setMessage("Please select a size.")
 					.setPositiveButton("OK", null)
 					.show()
 				return@setOnClickListener
