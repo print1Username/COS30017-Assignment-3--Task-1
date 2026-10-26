@@ -171,7 +171,11 @@ class CheckoutFragment : Fragment() {
 					append(String.format(Locale.US, " (-RM %.2f)", addOn.price - addOnPrice))
 				}
 			}
-			append(String.format(Locale.US, "\n\nTotal\n%-20s RM %.2f", "", calculateTotal()))
+			val separator = "=".repeat(20)
+			append("\n\n")
+			append(separator)
+			append(String.format(Locale.US, "\nTotal\n%-20s RM %.2f\n", "", calculateTotal()))
+			append(separator)
 		}
 
 		AlertDialog.Builder(requireContext())
