@@ -68,3 +68,8 @@ desktop.ini
 # Backup files
 *.bak
 *~
+
+# File
+*.pdf
+*.docx
+*.doc
