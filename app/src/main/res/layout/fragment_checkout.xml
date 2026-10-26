@@ -1,14 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".CheckoutFragment">
+	android:background="@color/page_background"
+	android:fillViewport="true">
 
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="@string/hello_blank_fragment" />
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-</FrameLayout>
+		<!-- App header -->
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/header_background"
+			android:gravity="start|center_vertical"
+			android:paddingStart="16dp"
+			android:paddingTop="10dp"
+			android:paddingBottom="10dp"
+			android:text="@string/app_title"
+			android:textColor="@color/header_text"
+			android:textSize="20sp"
+			android:textStyle="normal" />
+
+		<!-- Sandwich banner -->
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:adjustViewBounds="true"
+			android:contentDescription="@null"
+			android:scaleType="fitCenter"
+			android:src="@drawable/sandwiches" />
+
+		<!-- Add-on -->
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/section_background"
+			android:gravity="center"
+			android:padding="8dp"
+			android:text="@string/add_on_selection"
+			android:textColor="@color/section_text"
+			android:textSize="16sp"
+			android:textStyle="bold" />
+
+		<RadioGroup
+			android:id="@+id/radioAddOn"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+
+			<RadioButton
+				android:id="@+id/radioTea"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:buttonTint="@color/option_color"
+				android:gravity="start|center_vertical"
+				android:paddingStart="8dp"
+				android:text="@string/add_on_tea"
+				android:textSize="14sp" />
+
+			<RadioButton
+				android:id="@+id/radioCoffee"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:buttonTint="@color/option_color"
+				android:gravity="center"
+				android:text="@string/add_on_coffee"
+				android:textSize="14sp" />
+
+			<RadioButton
+				android:id="@+id/radioFries"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:buttonTint="@color/option_color"
+				android:gravity="end|center_vertical"
+				android:paddingEnd="8dp"
+				android:text="@string/add_on_fries"
+				android:textSize="14sp" />
+
+		</RadioGroup>
+
+		<!-- ==================== TOTAL ==================== -->
+
+		<!-- Divider above total -->
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/total_divider" />
+
+		<!-- Total row -->
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="6dp"
+			android:paddingBottom="6dp">
+
+			<!-- Sandwich icon stays on the left -->
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="54dp"
+				android:layout_gravity="start|center_vertical"
+				android:adjustViewBounds="true"
+				android:contentDescription="@null"
+				android:scaleType="fitCenter"
+				android:src="@drawable/sandwich_icon" />
+
+			<!-- Total stays centered on the screen -->
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_gravity="center"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<!-- Total label -->
+				<TextView
+					android:id="@+id/totalLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/total"
+					android:textColor="@color/total_text"
+					android:textSize="20sp"
+					android:textStyle="bold" />
+
+				<!-- Colon -->
+				<TextView
+					android:id="@+id/totalColon"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":"
+					android:textColor="@color/total_text"
+					android:textSize="20sp"
+					android:textStyle="bold" />
+
+				<!-- Total price -->
+				<TextView
+					android:id="@+id/totalPrice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="4dp"
+					android:text="@string/default_total"
+					android:textColor="@color/total_price"
+					android:textSize="20sp"
+					android:textStyle="bold" />
+
+			</LinearLayout>
+
+		</FrameLayout>
+
+		<!-- Divider below total -->
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/total_divider" />
+
+		<!-- ==================== BUTTONS ==================== -->
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="horizontal"
+			android:paddingTop="10dp"
+			android:paddingBottom="10dp">
+
+			<!-- Place Order -->
+			<ImageButton
+				android:id="@+id/buttonPlaceOrder"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@android:color/transparent"
+				android:contentDescription="@string/content_place_order"
+				android:src="@drawable/button_order" />
+
+			<!-- Space between buttons -->
+			<Space
+				android:layout_width="16dp"
+				android:layout_height="1dp" />
+
+			<!-- Reset -->
+			<ImageButton
+				android:id="@+id/buttonReset"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@android:color/transparent"
+				android:contentDescription="@string/content_reset"
+				android:src="@drawable/button_reset" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>

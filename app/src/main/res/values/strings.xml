@@ -27,6 +27,12 @@
 	<string name="size_9_inch">9 inch</string>
 	<string name="size_12_inch">12 inch</string>
 
+	<!-- Add-on options -->
+	<string name="add_on_selection">Add-on</string>
+	<string name="add_on_tea">Tea</string>
+	<string name="add_on_coffee">Coffee</string>
+	<string name="add_on_fries">French fries</string>
+
 	<!-- Total -->
 	<string name="total">Total</string>
 	<string name="default_total">RM 7.00</string>
