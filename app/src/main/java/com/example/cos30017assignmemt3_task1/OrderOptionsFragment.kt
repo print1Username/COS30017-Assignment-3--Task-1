@@ -112,32 +112,34 @@ class OrderOptionsFragment : Fragment() {
 			handleSideSelection("Cheese", isChecked)
 		}
 
-		buttonNext.setOnClickListener {
-			val selectedFillings = getSelectedFillings()
-			if (selectedFillings.isEmpty()) {
-				AlertDialog.Builder(requireContext())
-					.setTitle("Error")
-					.setMessage("Please select at least one filling.")
-					.setPositiveButton("OK", null)
-					.show()
-				return@setOnClickListener
-			}
+		buttonNext.setOnClickListener { goToCheckout() }
+	}
 
-			if (radioSize.checkedRadioButtonId == View.NO_ID) {
-				AlertDialog.Builder(requireContext())
-					.setTitle("Error")
-					.setMessage("Please select a size.")
-					.setPositiveButton("OK", null)
-					.show()
-				return@setOnClickListener
-			}
-
-			(requireActivity() as OnOptionsSelectedListener).onOptionsSelected(
-				selectedFillings,
-				getSelectedSides(),
-				getSelectedSize()
-			)
+	fun goToCheckout(requireSelection: Boolean = true) {
+		val selectedFillings = getSelectedFillings()
+		if (requireSelection && selectedFillings.isEmpty()) {
+			AlertDialog.Builder(requireContext())
+				.setTitle("Error")
+				.setMessage("Please select at least one filling.")
+				.setPositiveButton("OK", null)
+				.show()
+			return
 		}
+
+		if (requireSelection && radioSize.checkedRadioButtonId == View.NO_ID) {
+			AlertDialog.Builder(requireContext())
+				.setTitle("Error")
+				.setMessage("Please select a size.")
+				.setPositiveButton("OK", null)
+				.show()
+			return
+		}
+
+		(requireActivity() as OnOptionsSelectedListener).onOptionsSelected(
+			selectedFillings,
+			getSelectedSides(),
+			getSelectedSize()
+		)
 	}
 
 	private fun handleFillingSelection(fillingName: String, isChecked: Boolean) {
@@ -213,9 +215,10 @@ class OrderOptionsFragment : Fragment() {
 
 	private fun getSelectedSize(): String {
 		return when (radioSize.checkedRadioButtonId) {
+			R.id.radio6Inch -> "6 inch"
 			R.id.radio9Inch -> "9 inch"
 			R.id.radio12Inch -> "12 inch"
-			else -> "6 inch"
+			else -> ""
 		}
 	}
 }

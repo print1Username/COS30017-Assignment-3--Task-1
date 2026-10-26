@@ -13,8 +13,9 @@ import java.util.Locale
 
 class CheckoutFragment : Fragment() {
 
-	interface OnResetListener {
+	interface OnCheckoutListener {
 		fun onResetOrder()
+		fun onAddOnSelected(addOnId: Int)
 	}
 
 	data class MenuItem(val name: String, val price: Double)
@@ -58,7 +59,7 @@ class CheckoutFragment : Fragment() {
 		get() = arguments?.getStringArrayList(ARG_SIDES) ?: emptyList()
 
 	private val selectedSize: String
-		get() = arguments?.getString(ARG_SIZE) ?: "6 inch"
+		get() = arguments?.getString(ARG_SIZE) ?: ""
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -75,10 +76,17 @@ class CheckoutFragment : Fragment() {
 		buttonPlaceOrder = view.findViewById(R.id.buttonPlaceOrder)
 		buttonReset = view.findViewById(R.id.buttonReset)
 
-		radioAddOn.setOnCheckedChangeListener { _, _ -> updateTotal() }
+		if (savedInstanceState == null) {
+			val previousAddOn = arguments?.getInt(ARG_ADD_ON, View.NO_ID) ?: View.NO_ID
+			if (previousAddOn != View.NO_ID) radioAddOn.check(previousAddOn)
+		}
+		radioAddOn.setOnCheckedChangeListener { _, addOnId ->
+			updateTotal()
+			(requireActivity() as OnCheckoutListener).onAddOnSelected(addOnId)
+		}
 		buttonPlaceOrder.setOnClickListener { placeOrder() }
 		buttonReset.setOnClickListener {
-			(requireActivity() as OnResetListener).onResetOrder()
+			(requireActivity() as OnCheckoutListener).onResetOrder()
 		}
 
 		updateTotal()
@@ -131,6 +139,14 @@ class CheckoutFragment : Fragment() {
 			AlertDialog.Builder(requireContext())
 				.setTitle("Error")
 				.setMessage("Please select at least one filling.")
+				.setPositiveButton("OK", null)
+				.show()
+			return
+		}
+		if (selectedSize.isEmpty()) {
+			AlertDialog.Builder(requireContext())
+				.setTitle("Error")
+				.setMessage("Please select a size.")
 				.setPositiveButton("OK", null)
 				.show()
 			return
@@ -189,13 +205,20 @@ class CheckoutFragment : Fragment() {
 		private const val ARG_FILLINGS = "fillings"
 		private const val ARG_SIDES = "sides"
 		private const val ARG_SIZE = "size"
+		private const val ARG_ADD_ON = "add_on"
 
-		fun newInstance(fillings: ArrayList<String>, sides: ArrayList<String>, size: String) =
+		fun newInstance(
+			fillings: ArrayList<String>,
+			sides: ArrayList<String>,
+			size: String,
+			addOnId: Int
+		) =
 			CheckoutFragment().apply {
 				arguments = Bundle().apply {
 					putStringArrayList(ARG_FILLINGS, fillings)
 					putStringArrayList(ARG_SIDES, sides)
 					putString(ARG_SIZE, size)
+					putInt(ARG_ADD_ON, addOnId)
 				}
 			}
 	}
