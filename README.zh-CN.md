@@ -12,7 +12,7 @@ COS30017 移动设备软件开发 - 作业 3：任务 1
 请先确保电脑已安装 Git，然后运行：
 
 ```powershell
-git clone https://github.com/print1Username/COS30017-Assignment-3--Task-1.git
+git clone https://github.com/COS30017-Software-Development/COS30017-Assignment-3--Task-1.git
 cd COS30017-Assignment-3--Task-1
 ```
 
